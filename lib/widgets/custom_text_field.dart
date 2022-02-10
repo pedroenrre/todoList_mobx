@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final String? hint;
+  final Widget? prefix;
+  final Widget? suffix;
+  final bool obscure;
+  final TextInputType? textInputType;
+  final Function(String) onChanged;
+  final bool? enabled;
+
   const CustomTextField({
     Key? key,
     required this.onChanged,
@@ -12,15 +21,6 @@ class CustomTextField extends StatelessWidget {
     this.enabled,
     this.controller,
   }) : super(key: key);
-
-  final TextEditingController? controller;
-  final String? hint;
-  final Widget? prefix;
-  final Widget? suffix;
-  final bool obscure;
-  final TextInputType? textInputType;
-  final Function(String) onChanged;
-  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
