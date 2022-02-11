@@ -5,12 +5,6 @@ part 'login_controller.g.dart';
 class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
-  _LoginControllerBase() {
-    autorun((_) {
-      print(isEmailValid);
-    });
-  }
-
   @observable
   String email = '';
 
@@ -37,4 +31,18 @@ abstract class _LoginControllerBase with Store {
 
   @computed
   bool get buttonEnabled => isEmailValid && isPasswordValid;
+
+  @observable
+  bool loading = false;
+
+  @observable
+  bool loggedIn = false;
+
+  @action
+  Future<void> login() async {
+    loading = true;
+    await Future.delayed(const Duration(seconds: 2));
+    loading = false;
+    loggedIn = true;
+  }
 }
